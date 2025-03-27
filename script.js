@@ -147,18 +147,22 @@ window.addEventListener('keydown', (e) => {
 
 // 🎯 Mobile Controls Event Listeners
 document.getElementById('upBtn').addEventListener('click', () => {
+    moveSound.play();
     if (direction.y === 0) direction = { x: 0, y: -gridSize };
 });
 
 document.getElementById('downBtn').addEventListener('click', () => {
+    moveSound.play();
     if (direction.y === 0) direction = { x: 0, y: gridSize };
 });
 
 document.getElementById('leftBtn').addEventListener('click', () => {
+    moveSound.play();
     if (direction.x === 0) direction = { x: -gridSize, y: 0 };
 });
 
 document.getElementById('rightBtn').addEventListener('click', () => {
+    moveSound.play();
     if (direction.x === 0) direction = { x: gridSize, y: 0 };
 });
 
