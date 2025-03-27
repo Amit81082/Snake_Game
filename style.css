@@ -1,0 +1,156 @@
+/* General Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: url('image.png') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Container - makes sure the overlay is positioned relative to it */
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+/* Score Board */
+.score-board {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 20px;
+}
+
+
+
+
+/* Canvas Styling */
+canvas {
+    width: 30vw;
+    height: 50vh;
+    background: #222;
+    border: 5px solid #4CAF50;
+    box-shadow: 0 0 20px #4CAF50;
+    border-radius: 10px;
+}
+
+/* Start Button Styling */
+#startBtn {
+    margin-top: 20px;
+    padding: 0.8rem 1rem;
+    font-size: 20px;
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+    color: white;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#startBtn:hover {
+    box-shadow: 0 0 1rem #222;
+    background-color: #fd154b;
+    transform: scale(1.02);
+}
+
+
+
+
+@media (max-width: 1024px) {
+    canvas {
+        width: 90vw;
+        height: 40vh;
+    }
+}
+
+/* ✅ Mobile Controls Container */
+.mobile-controls {
+    display: none;  /* By default hide on desktop */
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* ✅ Button Styling */
+.mobile-controls button {
+    background:#23373e;
+    color: white;
+    border: none;
+    padding: 15px 35px;
+    font-size: 28px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+/* ✅ Hover Effect */
+.mobile-controls button:hover {
+    background: #152227;
+    transform: scale(1.1);
+}
+
+/* ✅ Mobile Layout */
+.mobile-controls div {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* ✅ Mobile Responsive Controls */
+@media (max-width: 768px) {
+    .mobile-controls {
+        display: flex; /* ✅ Show on mobile devices */
+    }
+
+    canvas {
+        width: 90vw;
+        height: 40vh;
+    }
+
+    .score-board {
+        width: 90vw;
+        padding: 20px;
+    }
+
+    .score-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+/* ✅ Mobile Responsive Controls */
+@media (max-width: 1024px) {
+    .mobile-controls {
+        display: flex; /* ✅ Show on mobile devices */
+    }
+
+    canvas {
+        width: 90vw;
+        height: 40vh;
+    }
+
+    .score-board {
+        width: 90vw;
+        padding: 20px;
+    }
+
+    .score-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
