@@ -130,19 +130,22 @@ function resetGame() {
 
 // ⌨️ Keyboard Controls
 window.addEventListener('keydown', (e) => {
-    moveSound.play();
-
+    
     switch (e.key) {
         case 'ArrowUp':
+            moveSound.play();
             if (direction.y === 0) direction = { x: 0, y: -gridSize };
             break;
         case 'ArrowDown':
+            moveSound.play();
             if (direction.y === 0) direction = { x: 0, y: gridSize };
             break;
         case 'ArrowLeft':
+            moveSound.play();
             if (direction.x === 0) direction = { x: -gridSize, y: 0 };
             break;
         case 'ArrowRight':
+            moveSound.play();
             if (direction.x === 0) direction = { x: gridSize, y: 0 };
             break;
     }
