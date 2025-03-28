@@ -64,14 +64,19 @@ function moveSnake() {
         score += 5;
         document.getElementById('score').textContent = score;
 
-        // ✅ Random food placement
+        // ✅ Wall se door rakhne wala food generator
+        const offset = 40;   // Kitni doori chahiye (40px)
+        const maxX = canvas.width - offset;
+        const maxY = canvas.height - offset;
+
         food = {
-            x: Math.floor(Math.random() * (canvas.width / gridSize)) * gridSize,
-            y: Math.floor(Math.random() * (canvas.height / gridSize)) * gridSize
+            x: Math.floor(Math.random() * ((maxX - offset) / gridSize)) * gridSize + offset,
+            y: Math.floor(Math.random() * ((maxY - offset) / gridSize)) * gridSize + offset
         };
 
+
         // ✅ Speed up the game
-        if (gameSpeed > 60) {
+        if (gameSpeed > 120) {
             gameSpeed -= 5;
             clearInterval(gameInterval);
             gameInterval = setInterval(gameLoop, gameSpeed);
@@ -102,25 +107,23 @@ function resetGame() {
     clearInterval(gameInterval);  // Stop the game loop first
 
     gameOverSound.play();
-    
+
     if (score > highScore) {
         highScore = score;
         localStorage.setItem('highScore', highScore);
         document.getElementById('highScore').textContent = highScore;
     }
- 
-    
+
+
     score = 0;
     document.getElementById('score').textContent = score;
     snake = [{ x: 200, y: 200 }];
     direction = { x: gridSize, y: 0 };
     gameSpeed = 200;
-    
-     
-     
-}
- 
-;
+
+
+
+};
 
 
 
