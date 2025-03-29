@@ -151,26 +151,62 @@ window.addEventListener('keydown', (e) => {
     }
 });
 
-// 🎯 Mobile Controls Event Listeners
-document.getElementById('upBtn').addEventListener('click', () => {
-    moveSound.play();
-    if (direction.y === 0) direction = { x: 0, y: -gridSize };
-});
+// ✅ Throttle function to avoid multiple triggers
+const throttle = (func, limit) => {
+    let lastFunc;
+    let lastRan;
+    return function () {
+        const context = this, args = arguments;
+        if (!lastRan) {
+            func.apply(context, args);
+            lastRan = Date.now();
+        } else {
+            clearTimeout(lastFunc);
+            lastFunc = setTimeout(function () {
+                if ((Date.now() - lastRan) >= limit) {
+                    func.apply(context, args);
+                    lastRan = Date.now();
+                }
+            }, limit - (Date.now() - lastRan));
+        }
+    };
+};
 
-document.getElementById('downBtn').addEventListener('click', () => {
-    moveSound.play();
-    if (direction.y === 0) direction = { x: 0, y: gridSize };
-});
+// ✅ Improved movement functions
+const moveUp = throttle(() => {
+    if (direction.y === 0) {
+        direction = { x: 0, y: -gridSize };
+        moveSound.play();
+    }
+}, 150);
 
-document.getElementById('leftBtn').addEventListener('click', () => {
-    moveSound.play();
-    if (direction.x === 0) direction = { x: -gridSize, y: 0 };
-});
+const moveDown = throttle(() => {
+    if (direction.y === 0) {
+        direction = { x: 0, y: gridSize };
+        moveSound.play();
+    }
+}, 150);
 
-document.getElementById('rightBtn').addEventListener('click', () => {
-    moveSound.play();
-    if (direction.x === 0) direction = { x: gridSize, y: 0 };
-});
+const moveLeft = throttle(() => {
+    if (direction.x === 0) {
+        direction = { x: -gridSize, y: 0 };
+        moveSound.play();
+    }
+}, 150);
+
+const moveRight = throttle(() => {
+    if (direction.x === 0) {
+        direction = { x: gridSize, y: 0 };
+        moveSound.play();
+    }
+}, 150);
+
+// ✅ Use pointer events for smoother touch interactions
+document.getElementById('upBtn').addEventListener('pointerdown', moveUp);
+document.getElementById('downBtn').addEventListener('pointerdown', moveDown);
+document.getElementById('leftBtn').addEventListener('pointerdown', moveLeft);
+document.getElementById('rightBtn').addEventListener('pointerdown', moveRight);
+
 
 
 // 🎯 Game Loop
