@@ -2,7 +2,7 @@
 
 A fun and interactive **Snake Game** built with HTML, CSS, and JavaScript. 🎮 It offers smooth gameplay, attractive design, and keeps track of your **High Score** using `localStorage`.
 
-!Live Demo - https://amit81082.github.io/Snake_Game/
+!Live Demo -[ https://amit81082.github.io/Snake_Game/](https://snakegamekj.netlify.app/)
 
 screenshot- ![image](https://github.com/user-attachments/assets/6e4ff16a-60ee-43a0-b06c-18ca17c0cd1c)
 
